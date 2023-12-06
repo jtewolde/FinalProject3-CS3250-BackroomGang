@@ -34,8 +34,6 @@
             <a class="nav-item nav-link" href="{{ url_for('users_signout') }}">Sign Out</a>
             <a class="nav-item nav-link" href="{{ url_for('view_playlists') }}">View Playlists</a>
             <a class="nav-item nav-link" href="{{ url_for('create_playlists') }}">Create Playlist</a>
-            <!--TODO: IMPLEMENT THE OTHER TEMPLATES THAT THE USER HAS ACCESS TO WHEN THEY ARE
-            SIGNED IN,(Viewing Playlists, Creating playlists)-->
             {% else %}
             <a class="nav-item nav-link" href="{{ url_for('users_login') }}">Sign In</a>
             <a class="nav-item nav-link" href="{{ url_for('users_signup') }}">Sign Up</a>
