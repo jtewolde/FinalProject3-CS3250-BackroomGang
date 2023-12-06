@@ -23,6 +23,8 @@
                 </tr>
         {% endfor %}
     </table>
+    <button type="button" onclick="simple_action('{{ url_for('add_playlists_video', playlist_id=playlist.id) }}')">Add Video</button>
+
     <p />
     <button onclick="simple_action('{{ url_for('add_playlists_video', playlist_id=playlist.id) }}')">Add Video</button>
     
