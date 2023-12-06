@@ -127,18 +127,40 @@ def view_playlists_videos(playlist_id):
 
 @app.route('/playlists/<playlist_id>/videos/add', methods=['GET', 'POST'])
 @login_required
-def add_playlists_video():
+def add_playlists_video(playlist_id):
     """ This function is meant for implementing the add videos to playlist route for the application """
-    pass
+    form = VideoForm()
+    if form.validate_on_submit():
+        video = Video(name=form.name.data, url=form.url.data, length=form.length.data, playlist_id=playlist_id)
+        db.session.add(video)
+        db.session.commit()
+
+        flash('You have added a video to the playlist!')
+        return redirect(url_for('view_playlists_videos', playlist_id=playlist_id))
+    return render_template('add_video.html', title='Add Video', form=form, playlist_id=playlist_id)
+
 
 # TODO 7: Implement User Story 5: Deleting videos from a playlist(Refer to Homework 3 when deleting an invoice item for this)
 
 
 @app.route('/playlists/<playlist_id>/<video_id>/delete', methods=['GET', 'POST'])
 @login_required
-def delete_playlists_video():
+def delete_playlists_video(playlist_id, video_id):
     """ This function is meant for implementing the delete a video from playlist route for the application """
-    pass
+    playlist = Playlist.query.filter_by(id=playlist_id, users_id=current_user.id).first()
+    if not playlist:
+        flash('Playlist does not exist')
+        return redirect(url_for('view_playlists'))
+    video = Video.query.filter_by(id=video_id, playlist_id=playlist_id).first()
+    if not video:
+        flash('This video does not exist')
+        return redirect(url_for('view_playlists_videos', playlist_id=playlist_id))
+    if video:
+        db.session.delete(video)
+        db.session.commit()
+        flash("You have deleted the video from the playlist")
+        return redirect(url_for('view_playlists_videos', playlist_id=playlist_id))
+    return render_template('delete_video.html', title='Delete Video', playlist=playlist, video=video)
 
 # TODO 8: Implement User Story 6: Deleting a playlist (Refer to Homework 3 when deleting an invoice for this)
 

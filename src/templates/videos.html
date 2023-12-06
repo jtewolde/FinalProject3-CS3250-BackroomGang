@@ -7,6 +7,7 @@
             <th>Video Title</th>
             <th>URL</th>
             <th>Duration</th>
+            <th>Action</th>
         </tr>
         {% for video in videos %}
             {% if loop.index % 2 == 0 %}
@@ -17,10 +18,13 @@
                     <td>{{ video.id }}</td>
                     <td>{{ video.name }}</td>
                     <td>{{ video.url }}</td>
-                    <td>{{ video.duration }}</td>
+                    <td>{{ video.length }}</td>
+                    <td><button type="button" class="button" onclick=confirmed_action("{{ url_for('delete_playlists_video', playlist_id=playlist.id, video_id=video.id) }}")>Delete</button></td>
                 </tr>
         {% endfor %}
     </table>
+    <button type="button" onclick="simple_action('{{ url_for('add_playlists_video', playlist_id=playlist.id) }}')">Add Video</button>
+
     <p />
 </div>
 <script type="text/javascript">
