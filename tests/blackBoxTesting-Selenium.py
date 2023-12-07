@@ -98,6 +98,7 @@ class TestCreatingPlaylist(unittest.TestCase):
 # Post condition: the user is redirected to the playlists page with the url "http://localhost:5000/playlists"
 # Also, the playlist with name = "test2" is deleted from the database
 
+
     def testDeletingPlaylist(self):
         # Sign In
         self.browser.find_element(By.LINK_TEXT, "Sign In").click()
@@ -128,6 +129,10 @@ class TestCreatingPlaylist(unittest.TestCase):
         self.assertFalse(self.browser.find_elements(
             By.XPATH, "//td[text()='test2']/parent::tr"))
 
+    # Pre condition: an user with id = "jane" and password = "1" exists in the database
+    # Pre condition: a playlist with name = "THE PLAYLIST" exists in the database and is associated with the user with id = "jane"
+    # Post condition: the user is redirected to the videos page with the url "http://localhost:5000/playlists/1/videos"
+
     def testViewingVideos(self):
         # Sign In
         self.browser.find_element(By.LINK_TEXT, "Sign In").click()
@@ -151,6 +156,13 @@ class TestCreatingPlaylist(unittest.TestCase):
         videos_page = self.browser.current_url
         self.assertEqual(
             videos_page, "http://localhost:5000/playlists/1/videos")
+
+    # Pre condition: an user with id = "jane" and password = "1" exists in the database
+    # Pre condition: a playlist with name = "THE PLAYLIST" exists in the database with no videos
+    # and is associated with the user with id = "jane"
+
+    # Post condition: the user is redirected to the videos page with the url "http://localhost:5000/playlists/1/videos"
+    # Also, a video with name = "test", url = "https://www.youtube.com/watch?v=9C_HReR_McQ", and length = 5 is added to the database
 
     def testAddingVideos(self):
         # Sign In
@@ -204,6 +216,13 @@ class TestCreatingPlaylist(unittest.TestCase):
         self.assertEqual(
             videos_page, "http://localhost:5000/playlists/1/videos")
 
+    # Pre condition: an user with id = "jane" and password = "1" exists in the database
+    # Pre condition: a playlist with name = "THE PLAYLIST" exists in the database with a video with name = "test"
+    # and is associated with the user with id = "jane"
+
+    # Post condition: the user is redirected to the videos page with the url "http://localhost:5000/playlists/1/videos"
+    # Also, the video with name = "test" is deleted from the database
+
     def testDeletingVideos(self):
         # Sign In
         self.browser.find_element(By.LINK_TEXT, "Sign In").click()
@@ -240,7 +259,7 @@ class TestCreatingPlaylist(unittest.TestCase):
         # Check if the post condition is met
         videos_page = self.browser.current_url
         self.assertEqual(
-            videos_page, "http://localhost:5000/playlists/1/videos?video_id=1")
+            videos_page, "http://localhost:5000/playlists/1/videos?video_id=3")
 
         # Check if the video is deleted from the database
         self.assertFalse(self.browser.find_elements(
