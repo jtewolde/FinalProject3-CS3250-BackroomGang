@@ -10,6 +10,7 @@
             <th>Description</th>
             <th>Quantity</th>
             <th>View Videos Inside Playlist</th>
+            <th>Delete Playlist</th>
         </tr>
         {% for playlist in playlists %}
             {% if loop.index % 2 == 0 %}
@@ -24,6 +25,7 @@
                     <td>{{ playlist.description }}</td>
                     <td>{{ playlist.quantity }}</td>
                     <td><button type="button" onclick="simple_action('{{ url_for('view_playlists_videos', playlist_id=playlist.id) }}')">View Videos</button></td>
+                    <td><button type="button" onclick="confirmed_action('{{ url_for('delete_playlists', playlist_id=playlist.id) }}')">Delete Playlist</button></td>
                 </tr>
         {% endfor %}
     </table>
