@@ -66,13 +66,15 @@ As a user of the video playlist manager web app, I want to enjoy a seamless view
 | ------- | ---------- | ------ | ------- | ------------ | -------- |
 | Sign in working | 11/28/2023 | Joseph | Working | - | N/A |
 | Sign out working | 11/29/2023 | Joseph | Working | - | N/A |
-| Unit Tests for Implementing User, Playlist, and Video Models | 12/2/2023 | Joseph | Working | All Unit Tests passed | 100% coverage(screenshot below) ![Test Coverage Results for White-box Testing](pics/testCoverageReport.png)
+| Unit Tests for Implementing User, Playlist, and Video Models | 12/2/2023 | Joseph | Working | All Unit Tests passed | 100% coverage(screenshot below) 
 | Create Playlist Function | 12/02/2023 | Bryan | Not Working / Work in progress | N/A | - |
 | View new playlist | Bryan | 12/04/2023 | Working | - | N/A |
 | Create new Playlist Function 2 | 12/04/2023 | Joseph | Fixed and Working | - | N/A |
 | Adding Video to a playlist | 12/05/2023 | Christopher/Sayizana | Working | - | N/A |
 | Deleting Video from playlist | 12/05/2023 | Bryan/Christopher | Working | - | N/A |
 | Deleting Playlist | 12/06/2023 | Joseph/Kentaro | Working | - | N/A |
+
+![Test Coverage Results for White-box Testing](pics/testCoverageReport.png)
 
 ### Deployment 
 
